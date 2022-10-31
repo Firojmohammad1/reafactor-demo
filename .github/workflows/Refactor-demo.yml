@@ -48,7 +48,7 @@ jobs:
           environment-url: http://my-app-test.com
           environment: test
 
-prod-deploy:
+ prod-deploy:
     name: prod-Deploy
 
     runs-on: ubuntu-latest
