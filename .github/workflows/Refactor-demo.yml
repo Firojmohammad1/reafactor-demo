@@ -32,7 +32,8 @@ jobs:
     name: Test-Deploy
 
     runs-on: ubuntu-latest
-    if: contains('refs/heads/develop',github.ref)
+    #if: contains('refs/heads/develop',github.ref)
+    if: github.ref == 'refs/heads/develop'
     steps:
          - uses: actions/checkout@v2
          - name: Kubernets set context
@@ -50,7 +51,8 @@ jobs:
     name: prod-Deploy
 
     runs-on: ubuntu-latest
-    if: contains('refs/heads/develop',github.ref)
+    #if: contains('refs/heads/develop',github.ref)
+    if: github.ref == 'refs/heads/develop'
     steps:
         - uses: actions/checkout@v2
         - name: Kubernets set context
