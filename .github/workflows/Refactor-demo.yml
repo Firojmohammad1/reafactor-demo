@@ -33,13 +33,15 @@ jobs:
 
     runs-on: ubuntu-latest
     if: contains('refs/heads/develop',github.ref)
-  - name: Kubernets set context
+  - 
+    name: Kubernets set context
     uses: azure/k8s-set-context@v2
     with:
         method: kubeconfig
         kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
-  - name: deploy
+  - 
+    name: deploy
     run: |
          ls
          cd helmcharts
@@ -51,13 +53,15 @@ jobs:
 
     runs-on: ubuntu-latest
     if: contains('refs/heads/develop',github.ref)
-  - name: Kubernets set context
+  - 
+    name: Kubernets set context
     uses: azure/k8s-set-context@v2
     with:
         method: kubeconfig
         kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
-  - name: deploy
+  - 
+    name: deploy
     run: |
          ls
          cd helmcharts
