@@ -29,9 +29,10 @@ jobs:
 
 
  Test-deploy:
-    name: Deploy my app
+    name: Test-Deploy
 
     runs-on: ubuntu-latest
+    if: contains('refs/heads/develop',github.ref)
 
     permissions:
       deployments: write
@@ -46,3 +47,23 @@ jobs:
           token: '${{ github.token }}'
           environment-url: http://my-app-test.com
           environment: test
+
+prod-deploy:
+    name: prod-Deploy
+
+    runs-on: ubuntu-latest
+    if: contains('refs/heads/develop',github.ref)
+
+    permissions:
+      deployments: write
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: chrnorm/deployment-action@v2
+        name: Create GitHub deployment
+        id: deployment
+        with:
+          token: '${{ github.token }}'
+          environment-url: http://my-app-prod.com
+          environment: prod
