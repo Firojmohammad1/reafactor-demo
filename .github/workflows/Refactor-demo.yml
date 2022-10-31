@@ -28,7 +28,7 @@ jobs:
           tags: firoj0786/app:latest
 
 
-  Test-deploy:
+ Test-deploy:
     name: Deploy my app
 
     runs-on: ubuntu-latest
