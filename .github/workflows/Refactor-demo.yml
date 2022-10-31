@@ -33,37 +33,33 @@ jobs:
 
     runs-on: ubuntu-latest
     if: contains('refs/heads/develop',github.ref)
-  - 
-    name: Kubernets set context
-    uses: azure/k8s-set-context@v2
-    with:
-        method: kubeconfig
-        kubeconfig: ${{ secrets.KUBE_CONFIG }}
+    steps:
+         - uses: actions/checkout@v2
+         - name: Kubernets set context
+           uses: azure/k8s-set-context@v2
+           with:
+              method: kubeconfig
+              kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
-  - 
-    name: deploy
-    run: |
-         ls
-         cd helmcharts
-         ls
-         helm upgrade hello-world hello-world
+         - name: deploy
+           run: |
+              ls
+              helm upgrade hello-world hello-world
 
  prod-deploy:
     name: prod-Deploy
 
     runs-on: ubuntu-latest
     if: contains('refs/heads/develop',github.ref)
-  - 
-    name: Kubernets set context
-    uses: azure/k8s-set-context@v2
-    with:
-        method: kubeconfig
-        kubeconfig: ${{ secrets.KUBE_CONFIG }}
+    steps:
+        - uses: actions/checkout@v2
+        - name: Kubernets set context
+          uses: azure/k8s-set-context@v2
+          with:
+             method: kubeconfig
+             kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
-  - 
-    name: deploy
-    run: |
-         ls
-         cd helmcharts
-         ls
-         Helm upgrade hello-world hello-world
+        - name: deploy
+          run: |
+             ls
+             Helm upgrade hello-world hello-world
